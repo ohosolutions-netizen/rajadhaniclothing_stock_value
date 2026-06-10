@@ -1,17 +1,34 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/",
-      "destination": "/app/index.html"
+      "src": "api/stock-statement.js",
+      "use": "@vercel/node"
     },
     {
-      "source": "/app",
-      "destination": "/app/index.html"
+      "src": "app/**",
+      "use": "@vercel/static"
     }
   ],
-  "functions": {
-    "api/stock-statement.js": {
-      "maxDuration": 60
+  "routes": [
+    {
+      "src": "/api/stock-statement",
+      "dest": "/api/stock-statement.js"
+    },
+    {
+      "src": "/",
+      "dest": "/app/index.html"
+    },
+    {
+      "src": "/app/?",
+      "dest": "/app/index.html"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/app/$1"
     }
-  }
+  ]
 }

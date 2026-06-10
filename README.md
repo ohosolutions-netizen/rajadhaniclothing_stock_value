@@ -124,3 +124,7 @@ are configured, the refresh-token credentials take precedence.
 Redeploy after changing environment variables. The Vercel-hosted browser calls the
 serverless function, while a widget hosted on `creatorapp.zoho.in` continues to use
 the Creator Custom API.
+
+GitHub Actions secrets are not automatically available to Vercel. Add these
+variables directly in **Vercel Project Settings -> Environment Variables**, then
+redeploy.
