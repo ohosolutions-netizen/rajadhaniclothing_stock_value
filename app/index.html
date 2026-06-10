@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Value Report</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="report-header">
+        <div>
+          <p class="eyebrow">Rajadhani Clothing</p>
+          <h1>Stock Value Report</h1>
+          <p class="subtitle">Consolidated stock movement and closing value</p>
+        </div>
+        <form id="filters" class="filters">
+          <label>
+            <span>From</span>
+            <input id="from-date" name="fromDate" type="date" required>
+          </label>
+          <label>
+            <span>To</span>
+            <input id="to-date" name="toDate" type="date" required>
+          </label>
+          <button id="load-button" type="submit">Run report</button>
+        </form>
+      </header>
+
+      <section id="notice" class="notice" hidden></section>
+
+      <section class="summary-grid" aria-label="Report summary">
+        <article class="summary-card opening">
+          <p>Opening value</p>
+          <strong id="opening-value">--</strong>
+          <span>First day in range</span>
+        </article>
+        <article class="summary-card inflow">
+          <p>Total inflow</p>
+          <strong id="total-inflow">--</strong>
+          <span>Purchases, credits and surplus</span>
+        </article>
+        <article class="summary-card outflow">
+          <p>Total outflow</p>
+          <strong id="total-outflow">--</strong>
+          <span>Sales, vendor credits and shortage</span>
+        </article>
+        <article class="summary-card closing">
+          <p>Closing value</p>
+          <strong id="closing-value">--</strong>
+          <span>Last day in range</span>
+        </article>
+      </section>
+
+      <section class="chart-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Trend</p>
+            <h2>Closing stock value</h2>
+          </div>
+          <p id="range-label" class="range-label">Select a date range</p>
+        </div>
+        <div id="chart" class="chart" aria-label="Closing stock value chart"></div>
+      </section>
+
+      <section class="table-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Statement</p>
+            <h2>Consolidated stock movement</h2>
+          </div>
+          <p id="row-count" class="range-label">Select a date range</p>
+        </div>
+        <div class="statement-wrap">
+          <div class="statement-head">
+            <span>Movement</span>
+            <span>In</span>
+            <span>Out</span>
+          </div>
+          <div id="statement-body" class="statement-body"></div>
+          <div id="empty-state" class="empty-state">Run the report to load stock values.</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://static.zohocdn.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
