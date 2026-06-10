@@ -120,8 +120,8 @@
   }
 
   function invokeStockStatement(fromDate, toDate) {
-    const isLocalhost = ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
-    if (isLocalhost) {
+    const isCreator = /(^|\.)creatorapp\.zoho\.in$/i.test(window.location.hostname);
+    if (!isCreator) {
       const params = new URLSearchParams({ fromDate: fromDate, toDate: toDate });
       return fetch(`/api/stock-statement?${params.toString()}`)
         .then(function (response) {

@@ -107,3 +107,20 @@ Alternatively, clear those three values and set a short-lived
 
 Then open `http://127.0.0.1:8000/app/`. Credentials remain server-side and are never
 sent to the widget.
+
+## Vercel deployment
+
+The repository includes a Vercel Node function at `/api/stock-statement`. In the
+Vercel project, add these environment variables for Production, Preview, and
+Development as needed:
+
+- `ZOHO_REFRESH_TOKEN`
+- `ZOHO_CLIENT_ID`
+- `ZOHO_CLIENT_SECRET`
+
+Alternatively, set the short-lived `ZOHO_ANALYTICS_ACCESS_TOKEN`. When both modes
+are configured, the refresh-token credentials take precedence.
+
+Redeploy after changing environment variables. The Vercel-hosted browser calls the
+serverless function, while a widget hosted on `creatorapp.zoho.in` continues to use
+the Creator Custom API.
